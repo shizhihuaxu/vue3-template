@@ -1,0 +1,32 @@
+{
+    "editor.formatOnSave": false,
+    "eslint.format.enable": true,
+    "eslint.alwaysShowStatus": true,
+    "eslint.validate": [
+        "html",
+        "javascript",
+        "vue",
+        "typescript",
+        "less",
+        "scss"
+    ],
+    "editor.codeActionsOnSave": {
+        "source.fixAll": true
+    },
+    "stylelint.enable": true,
+    "stylelint.packageManager": "yarn",
+    "stylelint.validate": [
+        "css",
+        "less",
+        "scss",
+        "postcss",
+        "vue"
+    ],
+    "stylelint.snippet": [
+        "css",
+        "scss",
+        "less",
+        "postcss",
+        "vue"
+    ]
+}

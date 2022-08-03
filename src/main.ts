@@ -1,5 +1,17 @@
 import { createApp } from 'vue'
-import './style.css'
+import { createPinia } from 'pinia'
+import setupAtnd from '@/components/antd'
+import locale from './locales'
+import router from './router'
 import App from './App.vue'
 
-createApp(App).mount('#app')
+const app = createApp(App)
+const pinia = createPinia()
+
+setupAtnd(app)
+
+app
+    .use(router)
+    .use(pinia)
+    .use(locale)
+    .mount('#app')

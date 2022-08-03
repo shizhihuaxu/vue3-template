@@ -1,0 +1,14 @@
+{
+    "new page": {
+        "prefix": "<vue-basic",
+        "body": [
+            "<template>",
+            "</template> \n",
+            "<script setup lang='ts'> \n",
+            "</script> \n",
+            "<style scoped lang='scss'> \n",
+            "</style>",
+        ],
+        "description": "new component"
+    },
+}
