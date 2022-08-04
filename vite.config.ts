@@ -1,6 +1,8 @@
 import type { ConfigEnv, UserConfig } from 'vite'
 import { loadEnv } from 'vite'
 import { resolve } from 'path'
+import legacy from '@vitejs/plugin-legacy'
+import vueJsx from '@vitejs/plugin-vue-jsx'
 import vue from '@vitejs/plugin-vue'
 import eslint from 'vite-plugin-eslint'
 import stylelint from 'vite-plugin-stylelint'
@@ -14,8 +16,12 @@ export default ({ mode }: ConfigEnv): UserConfig => {
         base: env.VITE_APP_PUBLIC_PATH,
         plugins: [
             vue(),
+            vueJsx(),
             eslint({ cache: false }),
             stylelint(),
+            legacy({
+                targets: ['defaults', 'not IE 11'],
+            }),
         ],
         resolve: {
             alias: {
