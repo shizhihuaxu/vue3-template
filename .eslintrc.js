@@ -26,6 +26,12 @@ module.exports = {
             'error',
             'never',
         ],
+        // NOTE 解决 ts 类型声明参数名称未使用的问题
+        'no-unused-vars': ['off'],
+        '@typescript-eslint/no-unused-vars': [
+            'error',
+            { vars: 'all', args: 'after-used', ignoreRestSiblings: true },
+        ],
         'vue/multi-word-component-names': 'off', // 允许单个单词的组件名
         'vue/mustache-interpolation-spacing': 'error', // 插值双花括号和内容之间需要有空格
         'vue/multiline-html-element-content-newline': 'error', // 标签包裹的内容独占一行
@@ -111,4 +117,7 @@ module.exports = {
             },
         },
     ],
+    globals: {
+        JSX: true,
+    },
 }

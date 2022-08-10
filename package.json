@@ -9,7 +9,7 @@
     "lint": "eslint --fix",
     "lint:style": "stylelint src/**/*.{html,vue,css,less,scss} --fix",
     "prepare": "husky install",
-    "test:init": "jest"
+    "test:unit": "jest"
   },
   "dependencies": {
     "ant-design-vue": "^3.2.10",

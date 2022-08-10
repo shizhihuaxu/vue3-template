@@ -107,7 +107,6 @@ const components = [
     ConfigProvider,
 ]
 
-// eslint-disable-next-line
 export default function setupAtnd(app: App) {
     components.forEach((component) => {
         app.use(component)
