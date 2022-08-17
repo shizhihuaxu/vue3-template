@@ -14,7 +14,7 @@
 - 组件库：Ant Design Vue 3.2.0
 - 图表：Echarts 5.3.3
 - 国际化：vue i18n 9.2.0
-- Mock数据(TODO)
+- Mock数据 Mock.js 1.1.0 + vite-plugin-mock(mock 接口)
 - 单元测试：Jest 
 - E2E 测试：Cypress（TODO） 
 - commit：commitizen+Husky + Lint Staged + Commitlint
