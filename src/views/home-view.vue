@@ -20,7 +20,7 @@
 import { message } from 'ant-design-vue'
 import { useAppStore } from '@/store/app'
 import request from '@/services/http/request'
-import HelloWorld from './HelloWorld.vue'
+import HelloWorld from './hello-world.vue'
 
 const appStore = useAppStore()
 const changeLang = () => {
