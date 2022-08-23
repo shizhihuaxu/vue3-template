@@ -54,6 +54,7 @@ git checkout `git describe --abbrev=0 --tags --match "v[0-9]*" $(git rev-list --
 ```bash
 nvm install 16.16.0
 nvm use 16.16.0
+nvm alias default [version] 设置默认node版本
 node -v # 检查是否安装成功
 ```
 

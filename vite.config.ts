@@ -53,6 +53,7 @@ export default ({ mode, command }: ConfigEnv): UserConfig => {
             },
         },
         server: {
+            open: true, // 运行完后直接打开
             host: true,
             proxy: {
                 '/api': {

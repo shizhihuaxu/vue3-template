@@ -21,11 +21,16 @@ module.exports = {
         indent: [
             'error',
             4,
+            {
+                SwitchCase: 1, // switch case 添加一个单位缩进
+            },
         ],
         semi: [
             'error',
             'never',
         ],
+        'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+        'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
         // NOTE 解决 ts 类型声明参数名称未使用的问题
         'no-unused-vars': ['off'],
         '@typescript-eslint/no-unused-vars': [
