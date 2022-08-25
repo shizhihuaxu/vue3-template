@@ -18,7 +18,10 @@ module.exports = {
         '@typescript-eslint',
     ],
     rules: {
-        indent: [
+        // resolve Cannot read property 'loc' of undefined
+        // https://github.com/eslint/eslint/issues/13956
+        indent: 'off',
+        '@typescript-eslint/indent': [
             'error',
             4,
             {
