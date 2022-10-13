@@ -7,6 +7,9 @@ export const locales = ['zh-CN', 'en-US']
 export const defaultLang = 'zh-CN'
 export const STORAGE_LANG_KEY = 'lang'
 
+// default
+dayjs.locale(zhCN.dayjsLocaleName)
+
 const i18n = createI18n({
     legacy: false, // you must set `false`, to use Composition API
     missingWarn: false,
@@ -34,15 +37,21 @@ export function loadLangAsync(lang: Locale = defaultLang): Promise<string> {
     return new Promise<string>((resolve) => {
         const currentLocale = i18n.global
 
-        import(`./lang/${lang}.ts`).then((res) => {
-            const loaded = res.default
+        if (currentLocale.locale.value !== lang) {
+            import(`./lang/${lang}.ts`).then((res) => {
+                const loaded = res.default
 
-            currentLocale.setLocaleMessage(lang, loaded)
-            dayjs.locale(loaded.dayjsLocaleName)
-            setI18nLang(lang)
+                currentLocale.setLocaleMessage(lang, loaded)
+                dayjs.locale(loaded.dayjsLocaleName)
+                setI18nLang(lang)
 
-            resolve(lang)
-        })
+                resolve(lang)
+            })
+
+            return
+        }
+
+        resolve(lang)
     })
 }
 

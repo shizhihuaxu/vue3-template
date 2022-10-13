@@ -17,16 +17,18 @@
 </template>
 
 <script setup lang="ts">
-import { message } from 'ant-design-vue'
+import { useRouter } from 'vue-router'
 import { useAppStore } from '@/store/app'
 import request from '@/services/http/request'
 import HelloWorld from './hello-world.vue'
 
+const router = useRouter()
 const appStore = useAppStore()
 const changeLang = () => {
     const lang = appStore.lang === 'zh-CN' ? 'en-US' : 'zh-CN'
-    appStore.changeLang(lang)
-    message.success('success')
+    appStore.changeLang(lang).then(() => {
+        router.go(0) // reload page
+    })
 }
 
 const mockUrl = () => {
