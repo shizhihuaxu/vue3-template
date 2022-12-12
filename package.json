@@ -7,15 +7,15 @@
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
     "lint": "eslint --fix",
-    "lint:style": "stylelint src/**/*.{html,vue,css,less,scss} --fix",
+    "lint:style": "stylelint src/**/*.{html,vue,css,scss} --fix",
     "prepare": "husky install",
     "test:unit": "jest"
   },
   "dependencies": {
-    "ant-design-vue": "^3.2.10",
     "axios": "^0.27.2",
     "dayjs": "^1.11.4",
     "echarts": "^5.3.3",
+    "element-plus": "^2.2.26",
     "lodash-es": "^4.17.21",
     "pinia": "^2.0.17",
     "resize-detector": "^0.3.0",
@@ -46,12 +46,10 @@
     "husky": "^8.0.0",
     "jest": "^28.1.3",
     "jest-environment-jsdom": "^28.1.3",
-    "less": "^4.1.3",
     "lint-staged": "^13.0.3",
     "mockjs": "^1.1.0",
     "postcss": "^8.4.14",
     "postcss-html": "^1.5.0",
-    "postcss-less": "^6.0.0",
     "postcss-scss": "^4.0.4",
     "sass": "^1.54.0",
     "stylelint": "^14.9.1",
@@ -61,6 +59,7 @@
     "terser": "^5.14.2",
     "ts-jest": "^28.0.7",
     "typescript": "^4.6.4",
+    "unplugin-element-plus": "^0.4.1",
     "vite": "^3.0.0",
     "vite-plugin-checker": "^0.5.2",
     "vite-plugin-eslint": "^1.7.0",
@@ -75,6 +74,6 @@
   },
   "lint-staged": {
     "*.{vue,js,ts,jsx,tsx}": "eslint --fix",
-    "src/**/*.{html,vue,css,less,scss}": "stylelint --fix"
+    "src/**/*.{html,vue,css,scss}": "stylelint --fix"
   }
 }

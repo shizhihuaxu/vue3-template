@@ -1,11 +1,11 @@
-import antd from 'ant-design-vue/es/locale/en_US'
+import elementPlus from 'element-plus/es/locale/lang/en'
 import dayjs from 'dayjs/locale/en'
 import pages from './pages/en-US'
 
 const locales = {
     localeName: 'enUS',
     dayjsLocaleName: 'en',
-    antd,
+    elementPlus,
     dayjs,
 
     ...pages,

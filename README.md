@@ -11,7 +11,7 @@
 - 类型检查：Typescript 4.6.4 
 - 代码风格：Eslint 8.20.0
 - 预处理器：SCSS（用于书写样式） + Less（用于配置主题） + StyleLint 14.9.1
-- 组件库：Ant Design Vue 3.2.0
+- 组件库：Element Plus 2.2.26
 - 图表：Echarts 5.3.3
 - 国际化：vue i18n 9.2.0
 - Mock数据 Mock.js 1.1.0 + vite-plugin-mock(mock 接口)

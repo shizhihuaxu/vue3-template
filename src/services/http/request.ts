@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from 'axios'
 import type { AxiosRequestConfig, AxiosError } from 'axios'
-import { notification } from 'ant-design-vue'
+import { ElNotification } from 'element-plus'
 import router from '@/router'
 import ErrorMsg from './error-message'
 
@@ -23,7 +23,7 @@ const errorHandler = (error: AxiosError): Promise<any> => {
         }
 
         if (msg) {
-            notification.error({
+            ElNotification.error({
                 message: msg,
             })
         }
@@ -50,7 +50,12 @@ const requestHandler = (
 // 响应拦截器
 const responseHandler = (
     response: AxiosResponse,
-): AxiosResponse<any> | Promise<any> => response.data
+): AxiosResponse<any> | Promise<any> => {
+    // 处理二进制数据时返回所有响应信息
+    if (response.config?.responseType === 'blob') return response
+
+    return response.data
+}
 
 request.interceptors.request.use(requestHandler, errorHandler)
 request.interceptors.response.use(responseHandler, errorHandler)

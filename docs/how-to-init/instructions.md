@@ -358,56 +358,6 @@ commitizen init cz-conventional-changelog --yarn --dev --exact
 
    
 
-8. 组件库 ant design vue 3
-
-   ```bash
-   yarn add ant-design-vue
-   ```
-
-   - 全局部分注册组件，参见` src/components/antd.ts` ，然后在 `main.ts` 中引入使用；官方的 `vite` 示例 `messge` 组件在 `scripts` 中使用需要单独引入，所以不使用此方式
-
-   - 覆盖主题，引入 `antd` 的全局样式文件必须引入 `less` 格式的，其他格式的无效
-
-     方案一：使用 `less` 变量文件覆盖
-
-     ```less
-     // src/styles/variables.less
-     @primaryc-color: red;
-     ```
-     
-     然后在` vite.config.js` 中配置
-     
-     ```
-     css: {
-       preprocessorOptions: {
-           less: {
-               modifyVars: {
-                    hack: 'true; @import "@/styles/variables.less";',
-                    'root-entry-name': 'variable',
-               },
-               // DO NOT REMOVE THIS LINE
-               javascriptEnabled: true,
-           },
-       },
-     },
-     ```
-     
-     方法二：直接在 `vite.config.js` 里重新配置颜色
-     
-     ```
-     css: {
-       preprocessorOptions: {
-           less: {
-               modifyVars: {
-                   'primary-color': '#1DA57A',
-               },
-               // DO NOT REMOVE THIS LINE
-               javascriptEnabled: true,
-           },
-       },
-     },
-     ```
-
    9.  nvmrc or volta 固定并自动切换使用的 node 版本
 
       ```
@@ -415,7 +365,7 @@ commitizen init cz-conventional-changelog --yarn --dev --exact
       ```
 
    9.  状态管理 Pinia，持久化方案
-   
+
       ```
       yarn add pinia 
       
@@ -427,11 +377,11 @@ commitizen init cz-conventional-changelog --yarn --dev --exact
       state, getter, action，无 mutation
       
    9.  单元测试 Jest
-   
+
       https://dev.to/imomaliev/creating-vite-vue-ts-template-setup-jest-5h1i
       
       https://jestjs.io/zh-Hans/docs/getting-started
-   
+
       https://test-utils.vuejs.org/installation/
       
       https://github.com/vuejs/vue-jest
@@ -488,7 +438,7 @@ commitizen init cz-conventional-changelog --yarn --dev --exact
       ```
       
    9.  国际化
-   
+
       https://vue-i18n.intlify.dev/
       
       ```

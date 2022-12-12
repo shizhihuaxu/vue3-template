@@ -1,6 +1,6 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
-import setupAtnd from '@/components/antd'
+import setupElement from '@/components/element'
 import locale from './locales'
 import router from './router'
 import App from './App.vue'
@@ -8,7 +8,7 @@ import App from './App.vue'
 const app = createApp(App)
 const pinia = createPinia()
 
-setupAtnd(app)
+setupElement(app)
 
 app
     .use(router)

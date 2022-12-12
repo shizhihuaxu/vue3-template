@@ -1,11 +1,10 @@
 <template>
-    <a-config-provider :locale='locale'>
+    <el-config-provider :locale='locale'>
         <router-view />
-    </a-config-provider>
+    </el-config-provider>
 </template>
 
 <script setup lang="ts">
-import type { ConfigProviderProps } from 'ant-design-vue/lib/config-provider'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useAppStore } from '@/store/app'
@@ -22,5 +21,5 @@ if (lang) {
     appStore.changeLang(defaultLang)
 }
 
-const locale = computed(() => i18n.getLocaleMessage(i18n.locale.value).antd as ConfigProviderProps['locale'])
+const locale = computed(() => i18n.getLocaleMessage(i18n.locale.value).elementPlus)
 </script>

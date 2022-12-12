@@ -9,6 +9,8 @@ import stylelint from 'vite-plugin-stylelint'
 import checker from 'vite-plugin-checker'
 import { viteMockServe } from 'vite-plugin-mock'
 
+import ElementPlus from 'unplugin-element-plus/vite'
+
 export default ({ mode, command }: ConfigEnv): UserConfig => {
     const root = process.cwd()
     const env = loadEnv(mode, root)
@@ -28,6 +30,9 @@ export default ({ mode, command }: ConfigEnv): UserConfig => {
                 typescript: true,
                 vueTsc: true,
             }),
+            ElementPlus({
+                useSource: true,
+            }),
             viteMockServe({
                 mockPath: 'mock', // mock 数据的目录，相对于工作目录
                 localEnabled: command === 'serve' && env.VITE_MOCK === 'true',
@@ -45,15 +50,10 @@ export default ({ mode, command }: ConfigEnv): UserConfig => {
         css: {
             devSourcemap: true,
             preprocessorOptions: {
-                less: {
-                    modifyVars: {
-                        'primary-color': '#1DA57A',
-                    },
-                    // DO NOT REMOVE THIS LINE
-                    javascriptEnabled: true,
-                },
                 scss: {
-                    additionalData: '@import "@/styles/_variables.scss";@import "@/styles/_mixins.scss";', // 添加公共样式
+                    additionalData: `
+                        @use "@/styles/element-plus.scss" as *;
+                    `,
                 },
             },
         },
@@ -70,13 +70,10 @@ export default ({ mode, command }: ConfigEnv): UserConfig => {
         },
         optimizeDeps: {
             include: [
-                'ant-design-vue/es/locale/en_US',
-                'ant-design-vue/es/locale/zh_CN',
-                'ant-design-vue/es/form',
-                'dayjs',
+                'element-plus/es/locale/lang/en',
+                'element-plus/es/locale/lang/zh-cn',
                 'dayjs/locale/eu',
                 'dayjs/locale/zh-cn',
-                'lodash-es',
             ],
         },
         build: {
@@ -85,8 +82,8 @@ export default ({ mode, command }: ConfigEnv): UserConfig => {
             rollupOptions: {
                 output: {
                     manualChunks: {
-                        vue: ['vue', 'vue-router'],
-                        antdv: ['ant-design-vue'],
+                        vue: ['vue', 'vue-router', 'pinia'],
+                        elementPlus: ['element-plus'],
                         dayjs: ['dayjs'],
                     },
                 },

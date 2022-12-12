@@ -2,18 +2,18 @@
     <div class='a'>
         {{ $t('pages.title') }}
     </div>
-    <a-date-picker />
-    <a-button
+    <el-date-picker />
+    <el-button
         type='primary'
         @click='changeLang'>
         切换语言
-    </a-button>
+    </el-button>
     <hello-world msg='haha'/>
-    <a-button
+    <el-button
         type='primary'
         @click='mockUrl'>
         mock url
-    </a-button>
+    </el-button>
 </template>
 
 <script setup lang="ts">
