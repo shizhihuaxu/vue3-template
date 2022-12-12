@@ -6,6 +6,7 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 import vue from '@vitejs/plugin-vue'
 import eslint from 'vite-plugin-eslint'
 import stylelint from 'vite-plugin-stylelint'
+import checker from 'vite-plugin-checker'
 import { viteMockServe } from 'vite-plugin-mock'
 
 export default ({ mode, command }: ConfigEnv): UserConfig => {
@@ -22,6 +23,10 @@ export default ({ mode, command }: ConfigEnv): UserConfig => {
             stylelint(),
             legacy({
                 targets: ['defaults', 'not IE 11'],
+            }),
+            checker({
+                typescript: true,
+                vueTsc: true,
             }),
             viteMockServe({
                 mockPath: 'mock', // mock 数据的目录，相对于工作目录
