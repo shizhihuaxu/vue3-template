@@ -20,11 +20,13 @@
 import { useRouter } from 'vue-router'
 import { useAppStore } from '@/store/app'
 import request from '@/services/http/request'
+import { ElMessage } from 'element-plus'
 import HelloWorld from './hello-world.vue'
 
 const router = useRouter()
 const appStore = useAppStore()
 const changeLang = () => {
+    ElMessage.error('准备切换')
     const lang = appStore.lang === 'zh-CN' ? 'en-US' : 'zh-CN'
     appStore.changeLang(lang).then(() => {
         router.go(0) // reload page
