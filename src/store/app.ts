@@ -5,6 +5,7 @@ import {
 import { localStorage } from '@/utils/local-storage'
 
 export const useAppStore = defineStore('app', {
+    persist: true,
     state: () => ({
         lang: defaultLang as Locale,
     }),
