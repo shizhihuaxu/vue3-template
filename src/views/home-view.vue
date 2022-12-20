@@ -44,11 +44,9 @@ const mockUrl = () => {
 </script>
 
 <style scoped lang="scss">
-$color: green;
-
 .a {
-    background-color: $test-color;
+    background-color: global.$test-color;
 
-    @include size(100px);
+    @include global.size(100px);
 }
 </style>

@@ -52,7 +52,7 @@ export default ({ mode, command }: ConfigEnv): UserConfig => {
             preprocessorOptions: {
                 scss: {
                     additionalData: `
-                        @use "@/styles/element-plus.scss" as *;
+                        @use "@/styles/global.scss" as global;
                     `,
                 },
             },
