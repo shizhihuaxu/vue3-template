@@ -72,9 +72,5 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
-  },
-  "lint-staged": {
-    "*.{vue,js,ts,jsx,tsx}": "eslint --fix",
-    "src/**/*.{html,vue,css,scss}": "stylelint --fix"
   }
 }

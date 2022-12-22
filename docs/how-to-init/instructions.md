@@ -279,24 +279,28 @@ commitizen init cz-conventional-changelog --yarn --dev --exact
    ​		利用 husky 在指定 git 钩子时，使用 lint-staged 过滤出匹配的文件，并针对匹配出的文件执行相应的命令。
    
    ```bash
-   # 初始化 husky, yarn version 1
-   npx husky-init && yarn  
+   # 安装
+   yarn add -D husky lint-staged
+   husky install
    
    # 创建一个钩子，并执行指定命令
-   npx husky add .husky/pre-commit "lint-staged"
-   git add .husky/pre-commit
+   npx husky add .husky/pre-commit "npx lint-staged"
    
    # 安装 lint-staged
    yarn add -D lint-staged
    ```
    
    ```json
-   // package.json 中
-   {
-   	 "lint-staged": {
-       	"*.{vue,js,ts,jsx,tsx}": "eslint --fix",
-       	"src/**/*.{html,vue,css,less,scss}": "stylelint --fix"
-     }
+   // lint-staged.config.js 中
+   module.exports = {
+       '*.{js,jsx,ts,tsx}':[ 'eslint --fix' ],
+       '*.{scss,less,css,html}': [ 'stylelint --fix' ],
+       '*.vue': [ 'eslint --fix', 'stylelint --fix' ],
+   }
+   
+   // package.json
+   "scripts": {
+     "prepare": "husky install"
    }
    ```
 
@@ -317,7 +321,7 @@ commitizen init cz-conventional-changelog --yarn --dev --exact
 
    ```bash
    # 配置 husky 钩子，校验 commit message 格式
-   npx husky add .husky/commit-msg 'npx commitlint --edit $1'
+   npx husky add .husky/commit-msg 'npx --no-install commitlint --edit $1'
    ```
 
 7. 环境变量
