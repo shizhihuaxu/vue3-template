@@ -8,8 +8,10 @@ import eslint from 'vite-plugin-eslint'
 import stylelint from 'vite-plugin-stylelint'
 import checker from 'vite-plugin-checker'
 import { viteMockServe } from 'vite-plugin-mock'
-
 import ElementPlus from 'unplugin-element-plus/vite'
+import AutoImport from 'unplugin-auto-import/vite'
+import Components from 'unplugin-vue-components/vite'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 
 export default ({ mode, command }: ConfigEnv): UserConfig => {
     const root = process.cwd()
@@ -29,6 +31,13 @@ export default ({ mode, command }: ConfigEnv): UserConfig => {
             checker({
                 typescript: true,
                 vueTsc: true,
+            }),
+            // element-plus 组件自动导入
+            AutoImport({
+                resolvers: [ElementPlusResolver({ importStyle: 'sass' })],
+            }),
+            Components({
+                resolvers: [ElementPlusResolver({ importStyle: 'sass' })],
             }),
             ElementPlus({
                 useSource: true,
@@ -52,7 +61,7 @@ export default ({ mode, command }: ConfigEnv): UserConfig => {
             preprocessorOptions: {
                 scss: {
                     additionalData: `
-                        @use "@/styles/global.scss" as global;
+                        @use "@/styles/_global.scss" as global;
                     `,
                 },
             },
