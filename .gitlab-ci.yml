@@ -1,0 +1,60 @@
+variables:
+  YARN_CONFIG_CACHE: .yarn-cache/
+
+workflow:
+  rules:
+    - if: '$CI_COMMIT_REF_NAME == "master"'
+
+# todo 使用include 分离各个任务到不同的文件中去
+
+stages:
+  - test
+  - build
+  - image
+  - deploy
+
+.yarn-cache:
+  # Job 以*点*（ . ）*开头*的键不会被处理
+  cache:
+    - key: 
+        files:
+          # 根据文件计算出 cache:key,不再使用的key的缓存会有定期清理机制吗
+          # 使用同一个 runner 运行不同 job，job 之间可以共享缓存，如果已经存在 key 缓存，不再重复处理，直接使用上一步产生的缓存
+          - yarn.lock 
+      paths:
+        - ${YARN_CONFIG_CACHE}
+
+run-test:
+  image: node:16.16.0
+  stage: test
+  extends: .yarn-cache
+  interruptible: true # 短时间重复触发，自动取消旧的流水线
+  script:
+    - yarn install --cache-folder ${YARN_CONFIG_CACHE}
+    - yarn test:unit
+
+build-dist:
+  only:
+    - master
+  image: node:16.16.0
+  stage: build
+  extends: .yarn-cache
+  interruptible: true
+  script:
+    - yarn install --cache-folder ${YARN_CONFIG_CACHE}
+    - yarn build
+  artifacts:
+    name: "dist"
+    paths:
+      - dist/
+    expire_in: 1 day
+
+build-image:
+  stage: image
+  image: docker:latest
+  needs: ["build-dist"]
+  interruptible: true
+  script:
+    - docker build -t vue3-template-frontend .
+    - docker run -d -p 8088:80 vue3-template-frontend
+

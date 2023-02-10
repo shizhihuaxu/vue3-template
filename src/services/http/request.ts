@@ -1,5 +1,5 @@
-import axios, { AxiosResponse } from 'axios'
-import type { AxiosRequestConfig, AxiosError } from 'axios'
+import type { AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios'
+import axios from 'axios'
 import { ElNotification } from 'element-plus'
 import router from '@/router'
 import ErrorMsg from './error-message'
