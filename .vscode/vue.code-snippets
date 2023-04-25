@@ -1,14 +1,35 @@
 {
     "new page": {
-        "prefix": "<vue-basic",
+        "prefix": "page",
         "body": [
             "<template>",
-            "</template> \n",
-            "<script setup lang='ts'> \n",
-            "</script> \n",
-            "<style scoped lang='scss'> \n",
-            "</style>",
+            "</template>",
+            "",
+            "<script setup lang='ts'>",
+            "</script>",
         ],
         "description": "new component"
     },
+    "script": {
+        "scope": "vue",
+        "prefix": "script",
+        "body": [
+            "<script setup lang='ts'>",
+            "$1",
+            "const emit = defineEmits(['close', 'ok'])",
+            "const props = defineProps({})",
+            "</script>"
+        ],
+        "description": "Create <script> block"
+    },
+    "style": {
+        "scope": "vue",
+        "prefix": "style",
+        "body": [
+            "<style scoped lang='scss'>",
+            "$1",
+            "</style>"
+        ],
+        "description": "Create <style> block"
+    }
 }

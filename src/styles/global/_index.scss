@@ -6,5 +6,5 @@
   )
 );
 
-@forward "@/styles/_variables.scss";
-@forward "@/styles/_mixins.scss";
+@forward "./variables.scss";
+@forward "./mixins.scss";

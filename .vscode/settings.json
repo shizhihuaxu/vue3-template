@@ -1,17 +1,15 @@
 {
     "editor.detectIndentation": false,
+    "//1": "使用 eslint 自动修复，关闭编辑器自动修复，避免双重修复导致的错误",
     "editor.formatOnSave": false,
     "editor.codeActionsOnSave": {
         "source.fixAll": true
     },
-    "eslint.format.enable": true,
-    "eslint.alwaysShowStatus": true,
-    "eslint.validate": [
-        "html",
-        "javascript",
-        "vue",
-        "typescript"
-    ],
+    "//2": "以下配置为禁用 vscode 内置的 stylelint",
+    "css.validate": false,
+    "less.validate": false,
+    "scss.validate": false,
+    "//3": "配置使用 stylelint 插件",
     "stylelint.enable": true,
     "stylelint.packageManager": "yarn",
     "stylelint.validate": [
@@ -27,5 +25,13 @@
         "less",
         "postcss",
         "vue"
-    ]
+    ],
+    "eslint.format.enable": true,
+    "eslint.validate": [
+        "html",
+        "javascript",
+        "vue",
+        "typescript"
+    ],
+    "typescript.tsdk": "node_modules/typescript/lib"
 }
